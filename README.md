@@ -71,6 +71,11 @@ python은 Open-Source 인터프리터 언어로써, 다양한 분야에서 활�
 
 ![](img/이미지%20035.png)  
 
+패키지 설치법
+
+    pip install 패키지이름
+
+
 머신러닝을 위해 설치할 패키지는 다음과 같다.
 * numpy : 수학관련 모듈
 * matplotlib : 그래프 그리기 위한 모듈
