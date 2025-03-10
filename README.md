@@ -5,20 +5,25 @@ python은 Open-Source 인터프리터 언어로써, 다양한 분야에서 활�
 
 특히 머신러닝 분야에서는 Jupyter 환경(Jupyter Notebook, Jupyter Lab)을 선호하며, 이는 _Cell_ 단위로 코드를 실행하는 _ipynb_ (줄여서 노트북)파일에 코드와 출력이 같이 저장된다는 특징이 있다. Visual Studio Code 에서도 Jupyter 익스텐션을 통해 ipynb를 작성가능하며, 이 글은 vscode에서 ipynb를 작성하고 실행하는 환경을 소개한다.
 
-> 최종작성일 : 2024-MAR-12
+> 최종작성일 : 2025-MAR-10
 
 
 
 # 1. Anaconda 설치
 
 ## 1.1. anaconda 페이지 이동
-https://www.anaconda.com/  
+아나콘다 공식 사이트: https://www.anaconda.com/  
+아나콘다 배포 다운로드: https://www.anaconda.com/download/success  
 ![alt](img/이미지%20023.png)
 
 
 
 ## 1.2. anaconda 다운로드
-![alt](img/이미지%20024.png)
+![alt](img/이미지%20024.png)  
+![alt](img/이미지%20024-1.png)  
+![alt](img/이미지%20024-2.png)  
+본인의 환경이 윈도우즈가 아니라면, 본인 환경에 맞게 다운로드  
+(아나콘다 배포 다운로드: https://www.anaconda.com/download/success)  
 
 ## 1.3. 설치프로그램 실행
 ![alt](img/이미지%20027.png)  
@@ -26,6 +31,7 @@ https://www.anaconda.com/
 
 ![alt](img/이미지%20029.png)  
 ![alt](img/이미지%20028.png)  
+![alt](img/이미지%20029-1.png)  
 일반적인 경우에는 다음을 눌러서 설치가 가능하다.  
 
 > 단, 경로에 영어 외의 글자가 있다면 설치할 수 없다는 메세지가 뜬다. 이전으로 돌아가 _"Just Me"_ 가  아닌 _"All Users"_ 로 설치하면 해결되기는 하지만,대부분의 기능을 **관리자 권한으로 실행** 해야하므로 추천하지 않는다.
@@ -65,7 +71,8 @@ https://www.anaconda.com/
 
 <br>
 
-**주의!: 반드시 가상환경이 활성화가 먼저 되어야함. [챕터2.2. ](#22-가상환경-생성-및-활성화) 참고**
+> [!WARNING]  
+> 반드시 가상환경이 활성화가 먼저 되어야함. [챕터2.2. ](#22-가상환경-생성-및-활성화) 참고
 
 <br>
 
@@ -76,20 +83,22 @@ https://www.anaconda.com/
     pip install 패키지이름
 
 
-머신러닝을 위해 설치할 패키지는 다음과 같다.
+머신러닝을 위해 설치할 패키지는 다음과 같다.  
 * numpy : 수학관련 모듈
 * matplotlib : 그래프 그리기 위한 모듈
 * pandas : 엑셀데이터를 다루기 위한 모듈
-* scikit-learn : 머신러닝 모델 지원 모듈
+* **scikit-learn : 머신러닝 모델 지원 모듈**
 * **ipykernel : vscode에서 주피터를 이용하기 위한 모듈**
+* sklearn-som : Self Organization Map 모델을 구현한 모듈
+* mlxtend : Association Rule 모델을 구현한 모듈
 
 예시
 
-    pip install numpy matplotlib pandas scikit-learn ipykernel
+    pip install numpy matplotlib pandas scikit-learn ipykernel sklearn-som mlxtend
 
 실행결과  
 ![](img/이미지%20035.png)  
-> 노란색 글씨는 인터넷이 불안정하여 발생한 경고이며, 일반적으로는 다운로드가 진행되는 결과를 볼 수 있다.
+> 스크린샷의 첫번째 줄 끝에 ip가 아니라 ipykernel 임을 주의
 
 <br><br><br><br>  
 
@@ -106,6 +115,8 @@ https://code.visualstudio.com/
 
 ## 3.3. 설치프로그램 실행
 ![](img/이미지%20036.png)  
+![](img/이미지%20037.png)  
+![](img/이미지%20038.png)  
 동의 후 전부 다음 버튼을 눌러 설치
 
 <br><br><br><br>  
@@ -122,7 +133,7 @@ jupyter 설치버튼을 누르면 다음 확장이 자동으로 설치된다.
 * Jupyter Notebook Renderers
 
 ## 4.2. python 익스텐션 설치
-![](img/이미지%20041.png) 
+![](img/이미지%20041.png)  
 4.1과 마찬가지로, 익스텐션에서 python 을 검색해서 설치한다.
 
 <br><br><br><br>
@@ -136,7 +147,7 @@ File - Open Folder 를 통해 폴더를 열어준다.
 ![](img/이미지%20043.png)
 프로젝트를 진행할 폴더를 만들어준다.
 스크린샷은 홈디렉토리이지만, 바탕화면, 내 문서 등에 만들어도 무방하다. 폴더이름은 lecture로 하였다.  
-폴더가 만들어진 후, 폴더를 클릭하고 **열기** 버튼을 눌러 폴더를 연다.
+폴더가 만들어진 후, 폴더를 클릭하고 **폴더 선택** 버튼을 눌러 폴더를 지정한다.
 
 
 ![](img/이미지%20044.png)  
@@ -169,7 +180,11 @@ print("Hello")
 
 <br>
 
-[챕터2.3. ](#23-파이썬-패키지-설치) 에서 설치한 패키지가 잘 설치되었는지 확인하기 위해 다음과 같은 코드를 작성하고 실행한다. **+Code** 버튼을 누르면 아래에 코드 Cell 이 추가된다.
+[챕터2.3. ](#23-파이썬-패키지-설치) 에서 설치한 패키지가 잘 설치되었는지 확인하기 위해 다음과 같은 코드를 작성하고 실행한다. **+Code** 버튼을 누르면 아래에 코드 Cell 이 추가된다.  
+![](img/이미지%20053-1.png)  
+<br>  
+  
+아래쪽에 새로 생성된 코드 Cell에 다음 코드를 입력한다.  
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -184,6 +199,7 @@ plt.plot(np.random.randn(100))
 
 # 6. 결론
 여기까지 문제가 없다면, vscode에서 ipynb 파일을 생성하고 실행이 가능하다. vscode를 재실행하면, 파이썬 커널이 종료되어 작업중인 변수는 사라지므로, 그럴 때는 **_Run All_** 버튼을 눌러 전체 재실행하면 된다.  
+
   
 추가적인 패키지가 필요하다면 노트북 파일을 **가상환경을 연결한뒤([챕터5.3. ](#53-노트북-파일과-파이썬-가상환경-연결))** 코드 Cell에서 
 
